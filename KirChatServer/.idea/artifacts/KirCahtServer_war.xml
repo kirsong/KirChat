@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="KirCahtServer:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="KirCahtServer.war">
-      <element id="artifact" artifact-name="KirCahtServer:war exploded" />
-    </root>
-  </artifact>
-</component>
