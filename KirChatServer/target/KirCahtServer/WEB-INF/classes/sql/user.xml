@@ -8,4 +8,13 @@
           VALUES (#{id},#{name})
     </insert>
 
+    <select id="listSearch" parameterType="user" resultType="user">
+        SELECT * FROM user_chat
+        WHERE id = #{id}
+        <if test="name != null">
+            AND name= #{name}
+        </if>
+
+    </select>
+
 </mapper>
