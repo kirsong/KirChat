@@ -8,13 +8,44 @@
           VALUES (#{id},#{name})
     </insert>
 
+    <!-- 테스트  -->
     <select id="listSearch" parameterType="user" resultType="user">
         SELECT * FROM user_chat
         WHERE id = #{id}
         <if test="name != null">
             AND name= #{name}
         </if>
-
     </select>
+
+    <!-- 룸 리스트 검색 -->
+    <select id="roomListSearch" parameterType="java.lang.String" resultType="com.chat.mobile.vo.RoomListVO" >
+        select a.id ,
+        a.name ,
+        a.create_date ,
+        b.room_id ,
+        b.room_name ,
+        b.create_user_id ,
+        b.target_user_id ,
+        b.create_date as room_create_date
+        from kirchatdb.user_chat a right join  kirchatdb.chating_room_chat b
+        on a.id=b.create_user_id where a.id=#{userId}
+        <if test="targetUserId != null">
+            AND b.target_user_id = #{targetUserId}
+        </if>
+        ;
+    </select>
+
+    <resultMap id="roomListResult" type="com.chat.mobile.vo.RoomListVO">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <result property="createData" column="create_date"></result>
+        <collection property="roomList" ofType="room">
+            <result property="roomId" column="room_id"></result>
+            <result property="roomName" column="room_name"></result>
+            <result property="createUserId" column="create_user_id"></result>
+            <result property="targetUserId" column="target_user_id"></result>
+            <result property="createDate" column="room_create_date"></result>
+        </collection>
+    </resultMap>
 
 </mapper>

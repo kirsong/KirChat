@@ -3,8 +3,8 @@ package com.chat.mobile.vo;
 import java.io.Serializable;
 
 /**
- * 결과 값 모듈
- */
+        * 결과 값 모듈
+        */
 public class ResultJsonVO implements Serializable {
 
     /**

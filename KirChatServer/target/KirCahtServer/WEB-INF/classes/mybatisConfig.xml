@@ -18,6 +18,7 @@
     <!-- Continue editing here -->
     <typeAliases>
         <typeAlias alias="user" type="com.chat.mobile.vo.UserVO"></typeAlias>
+        <typeAlias alias="room" type="com.chat.mobile.vo.RoomVO" ></typeAlias>
     </typeAliases>
 
     <mappers>

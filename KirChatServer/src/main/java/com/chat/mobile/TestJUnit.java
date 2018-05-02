@@ -2,6 +2,7 @@ package com.chat.mobile;
 
 import com.chat.mobile.mapper.UserMapper;
 import com.chat.mobile.service.UserService;
+import com.chat.mobile.vo.RoomListVO;
 import com.chat.mobile.vo.UserVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +28,13 @@ public class TestJUnit {
         userVO.setId("11");
         ArrayList<UserVO> userVOS=userMapper.listSearch(userVO);
         System.out.println("=========== select data Size : "+userVOS.size()+"===========");
+    }
+
+    @Test
+    public void roomList(){
+        UserMapper userMapper=sqlSessionTemplate.getMapper(UserMapper.class);
+        RoomListVO roomListVO=userMapper.roomListSearch("11","22");
+        System.out.println(roomListVO.getName());
     }
 
 }

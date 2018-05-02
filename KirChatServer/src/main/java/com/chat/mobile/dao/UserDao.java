@@ -18,6 +18,7 @@ public class UserDao {
         UserVO userVO=new UserVO();
         userVO.setId(id);
         userVO.setName(name);
+
         return userMapper.createUser(userVO);
     }
 
