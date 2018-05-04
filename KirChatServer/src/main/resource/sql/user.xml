@@ -4,48 +4,48 @@
 <mapper namespace="com.chat.mobile.mapper.UserMapper">
 
     <insert id="createUser" parameterType="user" >
-        INSERT INTO user_chat(id,name)
-          VALUES (#{id},#{name})
+        INSERT INTO user_chat(id,name,create_date,device_os)
+          VALUES (#{id},#{name},#{createData},#{deviceOS})
     </insert>
 
-    <!-- 테스트  -->
-    <select id="listSearch" parameterType="user" resultType="user">
-        SELECT * FROM user_chat
-        WHERE id = #{id}
-        <if test="name != null">
-            AND name= #{name}
-        </if>
+    <!-- 사용자 검색 -->
+    <select id="userSelect" parameterType="java.lang.String" resultType="user">
+        SELECT  * FROM user_chat
+        WHERE id=#{id}
     </select>
 
-    <!-- 룸 리스트 검색 -->
-    <select id="roomListSearch" parameterType="java.lang.String" resultMap="roomListResult">
-        select a.id ,
-        a.name ,
-        a.create_date ,
-        b.room_id ,
-        b.room_name ,
-        b.create_user_id ,
-        b.target_user_id ,
-        b.create_date as room_create_date
-        from kirchatdb.user_chat a right join  kirchatdb.chating_room_chat b
-        on a.id=b.create_user_id where a.id=#{userId}
-        <if test="targetUserId != null">
-            AND b.target_user_id = #{targetUserId}
-        </if>
-        ;
+    <!-- 사용자 디바이스 정보 업데이트 -->
+    <update id="deviceOsUpdateUser" parameterType="java.lang.String">
+        UPDATE user_chat
+        SET device_os=#{deviceOs}
+        WHERE id=#{id}
+    </update>
+
+    <!-- 사용자 리스트 -->
+    <select id="userList" resultType="user">
+        SELECT  * FROM user_chat
     </select>
 
-    <resultMap id="roomListResult" type="com.chat.mobile.vo.RoomListVO">
-        <result property="id" column="id"></result>
-        <result property="name" column="name"></result>
-        <result property="createData" column="create_date"></result>
-        <collection property="roomList" ofType="room">
-            <result property="roomId" column="room_id"></result>
-            <result property="roomName" column="room_name"></result>
-            <result property="createUserId" column="create_user_id"></result>
-            <result property="targetUserId" column="target_user_id"></result>
-            <result property="createDate" column="room_create_date"></result>
-        </collection>
-    </resultMap>
+    <!-- 푸시 토큰 등록 -->
+    <insert id="insertPush" parameterType="push">
+        INSERT INTO device_push_chat(id,push_token,device_os,update_date)
+          VALUES (#{id},#{pushToken},#{deviceOS},#{updateDate})
+    </insert>
+
+    <!-- 푸시 업데이트 -->
+    <update id="updatePush" parameterType="push">
+        UPDATE device_push_chat
+        SET push_token=#{pushToken},
+            device_os=#{deviceOS},
+            update_date=#{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <!-- 푸시 검색 -->
+    <select id="selectPush" parameterType="push" resultType="push">
+        SELECT * FROM device_push_chat
+        WHERE id=#{id}
+    </select>
+
 
 </mapper>

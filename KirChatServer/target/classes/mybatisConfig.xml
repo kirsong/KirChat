@@ -19,10 +19,14 @@
     <typeAliases>
         <typeAlias alias="user" type="com.chat.mobile.vo.UserVO"></typeAlias>
         <typeAlias alias="room" type="com.chat.mobile.vo.RoomVO" ></typeAlias>
+        <typeAlias alias="push" type="com.chat.mobile.vo.PushVO"></typeAlias>
+        <typeAlias alias="chatting" type="com.chat.mobile.vo.ChattingVO"></typeAlias>
     </typeAliases>
 
     <mappers>
         <mapper resource="sql/user.xml"></mapper>
+        <mapper resource="sql/room-sql.xml"></mapper>
+        <mapper resource="sql/chatting-sql.xml"></mapper>
     </mappers>
 
 

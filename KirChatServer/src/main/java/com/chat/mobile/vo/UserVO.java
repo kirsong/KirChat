@@ -9,7 +9,8 @@ public class UserVO implements Serializable{
 
     private String id;
     private String name;
-    private Date createData;
+    private String createData;
+    private String deviceOS;
 
     public String getId() {
         return id;
@@ -27,11 +28,19 @@ public class UserVO implements Serializable{
         this.name = name;
     }
 
-    public Date getCreateData() {
+    public String getCreateData() {
         return createData;
     }
 
-    public void setCreateData(Date createData) {
+    public void setCreateData(String createData) {
         this.createData = createData;
+    }
+
+    public String getDeviceOS() {
+        return deviceOS;
+    }
+
+    public void setDeviceOS(String deviceOS) {
+        this.deviceOS = deviceOS;
     }
 }

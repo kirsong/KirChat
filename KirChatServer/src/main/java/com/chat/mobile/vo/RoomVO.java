@@ -9,7 +9,7 @@ public class RoomVO {
     private String roomName;//룸 명
     private String createUserId;//룸 생성한 사용자 ID
     private String targetUserId;//상대방 사용자 ID
-    private Date createDate;//생성 날짜
+    private String createDate;//생성 날짜
 
     public String getRoomId() {
         return roomId;
@@ -43,11 +43,11 @@ public class RoomVO {
         this.targetUserId = targetUserId;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 }
