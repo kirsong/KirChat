@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "14777731665",
+    "firebase_url": "https://kirchat-8d87f.firebaseio.com",
+    "project_id": "kirchat-8d87f",
+    "storage_bucket": "kirchat-8d87f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14777731665:android:782b1ceb1b341be4",
+        "android_client_info": {
+          "package_name": "chat.kir.com.kirchatandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14777731665-kom4mrvoc72b3sppq0vtbof2ngd6he4l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "chat.kir.com.kirchatandroid",
+            "certificate_hash": "778d883fa936518b329381b4df2e10d8748071f9"
+          }
+        },
+        {
+          "client_id": "14777731665-5p4sff8lkq83p8fc2rh7nn6lhp7oeght.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVGMD68u_4EfHPxmXk26HFFyYoBMHBc4Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14777731665-5p4sff8lkq83p8fc2rh7nn6lhp7oeght.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

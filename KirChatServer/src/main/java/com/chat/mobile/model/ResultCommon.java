@@ -16,6 +16,7 @@ public class ResultCommon implements Serializable {
      */
     //디폴트는 성공으로 정의
     private String code= Define.SUCCESS_CODE;
+    private String message;
 
     public String getCode() {
         return code;
@@ -23,5 +24,13 @@ public class ResultCommon implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

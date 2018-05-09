@@ -3,18 +3,27 @@ package com.chat.mobile;
 import com.chat.mobile.dao.UserDao;
 import com.chat.mobile.mapper.RoomMapper;
 import com.chat.mobile.mapper.UserMapper;
+import com.chat.mobile.model.FcmRequest;
+import com.chat.mobile.model.FcmData;
+import com.chat.mobile.model.FcmResult;
 import com.chat.mobile.service.ChattingService;
-import com.chat.mobile.service.UserService;
+import com.chat.mobile.service.RoomService;
+import com.chat.mobile.util.FcmUtil;
+import com.chat.mobile.util.Util;
 import com.chat.mobile.vo.*;
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +38,8 @@ public class TestJUnit {
     public UserDao userDao;
     @Autowired
     public ChattingService chattingService;
+    @Autowired
+    public RoomService roomService;
 
     //방 만들기
     @Test
@@ -96,6 +107,39 @@ public class TestJUnit {
             System.out.println("index : "+chattingVOList.get(i).getNumber());
         }
 
+    }
+
+    @Test
+    public void getResource(){
+
+        Resource res=new ClassPathResource("FCMserviceAccountKey.json");
+        try {
+            FileInputStream file=new FileInputStream(res.getFile());
+            file.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testFCM(){
+
+        String tokenKey="cCN-vl_mjfM:APA91bH2OG4juZVfdJ6j0Zkb1JiLjwHFu9CJN5xlDtgzGunrvUx2Nsp-4mRuMeWcKpDp0nCa2tUpr3Jv4O-TPyAHwybYw9VAzeK63b5qcoDaM0m8XK74ECra0UFcWnb6eAHEe-zObrdq";
+        FcmUtil fcmUtil=new FcmUtil();
+        FcmRequest fcmRequest =new FcmRequest();
+        fcmRequest.setTo(tokenKey);
+        FcmData fcmData =new FcmData();
+        fcmData.setName("홍길동");
+        fcmData.setContent("내용");
+        fcmData.setDate(Util.createDateFormat());
+        fcmRequest.setData(fcmData);
+
+        try {
+            FcmResult fcmResult=fcmUtil.sendFcmPush(fcmRequest);
+            System.out.println(fcmResult.getSuccess()>0?"보내기 성공":"보내기 실패");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

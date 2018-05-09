@@ -7,6 +7,7 @@ import com.chat.mobile.vo.RoomListVO;
 import com.chat.mobile.vo.RoomVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
